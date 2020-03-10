@@ -47,20 +47,3 @@ def collate_fn(batch):
         outputs[:lj, ind] = torch.Tensor(j).long()
 
     return inputs, outputs
-
-
-if __name__ == '__main__':
-    from config import DataConfig
-
-    ds = PersianLexicon(
-        DataConfig.graphemes_path,
-        DataConfig.phonemes_path,
-        DataConfig.lexicon_path
-    )
-    for i in range(len(ds.lexicon)):
-        ds[i]
-
-    dl = DataLoader(ds, collate_fn=collate_fn, batch_size=4)
-    for x, y in dl:
-        print(x, y)
-        break

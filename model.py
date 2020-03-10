@@ -55,21 +55,3 @@ class Decoder(nn.Module):
         output = output.view(T, N, self.phonemes_size)
 
         return output, hidden, att_weights
-
-
-if __name__ == '__main__':
-    encoder = Encoder(32, 128)
-    decoder = Decoder(20, 128)
-
-    x = torch.LongTensor([[0, 0], [3, 8], [4, 4], [3, 1], [1, 1]])
-    enc = encoder(x)
-
-    # decode for 2 time steps
-    print('step 0')
-    x0 = torch.LongTensor([[0, 0]])
-    y0, hidden, att_weights0 = decoder(x0, enc)
-    print('\n' * 3)
-    print('step 1')
-    # select x1 from y
-    x1 = torch.LongTensor([[7, 4]])
-    y1, hidden, att_weights1 = decoder(x1, enc, hidden)
