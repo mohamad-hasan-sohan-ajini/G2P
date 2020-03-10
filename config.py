@@ -7,9 +7,10 @@ gpu = torch.device('cuda')
 
 
 class DataConfig(object):
-    graphemes_path = 'resources/Graphemes.json'
-    phonemes_path = 'resources/Phonemes.json'
-    lexicon_path = 'resources/Lexicon.json'
+    language = 'EN'
+    graphemes_path = f'resources/{language}/Graphemes.json'
+    phonemes_path = f'resources/{language}/Phonemes.json'
+    lexicon_path = f'resources/{language}/Lexicon.json'
 
 
 class ModelConfig(object):
@@ -27,10 +28,10 @@ class TrainConfig(object):
     lr = 3e-4
     batch_size = 128
     epochs = 10
-    log_path = 'log'
+    log_path = f'log/{DataConfig.language}'
 
 
 class TestConfig(object):
     device = cpu
-    encoder_model_path = 'models/encoder_e10.pth'
-    decoder_model_path = 'models/decoder_e10.pth'
+    encoder_model_path = f'models/{DataConfig.language}/encoder_e10.pth'
+    decoder_model_path = f'models/{DataConfig.language}/decoder_e10.pth'
