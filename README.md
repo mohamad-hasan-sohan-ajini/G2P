@@ -18,11 +18,13 @@ pip3 install -r requirements.txt
 
 
 ## Dataset
-I clean and prune [zaya dictionary](https://www.peykaregan.ir/dataset/%D9%88%D8%A7%DA%98%DA%AF%D8%A7%D9%86-%D8%B2%D8%A7%DB%8C%D8%A7%DB%8C-%D8%B2%D8%A8%D8%A7%D9%86-%D9%81%D8%A7%D8%B1%D8%B3%DB%8C). The cleaned version is stored in ```resources/Lexicon.json```, and will be used to train the G2P model.
-Also there is [tihu dictionary](https://github.com/tihu-nlp/tihudict) which has limited words and could be added to the training lexicon.
-Check ```resources``` for more information.
+Currently the following languages are supported:
+1. EN: English
+2. FA: Farsi
 
-The model could be used for other languages by providing ```Grapheme.json```, ```Phonemes.json``` and ```Lexicon.json```.
+You could easily provide and use your own language specific pronunciatin doctionary for training G2P.
+More details about data preparation and contribution could be found in ```resources```.<br/>
+Feel free to provide resources for other languages.
 
 
 
@@ -49,15 +51,25 @@ Training parameters could be found at ```config.py```.
 ### Test
 To get pronunciation of a word:
 ```
+# EN example
+python test.py --word PYTHON
+P.IH.TH.AH.N.<eos>
+# FA example
 python test.py --word پایتون
 p.A.y.t.o.n.<eos>
 ```
 You could also visualize the attention weights, using ```--visualize```:
 ```
+# EN example
+python test.py --visualize --word PYTHON
+P.IH.TH.AH.N.<eos>
+# FA example
 python test.py --visualize --word پایتون
 p.A.y.t.o.n.<eos>
 ```
-![attention weights](attention/پایتون.png)
+EN                              | FA
+:------------------------------:|:---------------------------:
+![](attention/EN/PYTHON.png)    |![](attention/FA/پایتون.png)
 
 
 
