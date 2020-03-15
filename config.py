@@ -33,5 +33,5 @@ class TrainConfig(object):
 
 class TestConfig(object):
     device = cpu
-    encoder_model_path = f'models/{DataConfig.language}/encoder_e10.pth'
-    decoder_model_path = f'models/{DataConfig.language}/decoder_e10.pth'
+    encoder_model_path = f'models/{DataConfig.language}/encoder_e{TrainConfig.epochs:02}.pth'
+    decoder_model_path = f'models/{DataConfig.language}/decoder_e{TrainConfig.epochs:02}.pth'
