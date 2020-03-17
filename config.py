@@ -1,3 +1,4 @@
+import os
 import json
 
 import torch
@@ -7,7 +8,7 @@ gpu = torch.device('cuda')
 
 
 class DataConfig(object):
-    language = 'EN'
+    language = os.getenv('LANGUAGE', 'EN')
     graphemes_path = f'resources/{language}/Graphemes.json'
     phonemes_path = f'resources/{language}/Phonemes.json'
     lexicon_path = f'resources/{language}/Lexicon.json'
@@ -27,11 +28,11 @@ class TrainConfig(object):
     device = gpu if torch.cuda.is_available() else cpu
     lr = 3e-4
     batch_size = 128
-    epochs = 10
+    epochs = int(os.getenv('EPOCHS', '10'))
     log_path = f'log/{DataConfig.language}'
 
 
 class TestConfig(object):
     device = cpu
-    encoder_model_path = f'models/{DataConfig.language}/encoder_e10.pth'
-    decoder_model_path = f'models/{DataConfig.language}/decoder_e10.pth'
+    encoder_model_path = f'models/{DataConfig.language}/encoder_e{TrainConfig.epochs:02}.pth'
+    decoder_model_path = f'models/{DataConfig.language}/decoder_e{TrainConfig.epochs:02}.pth'
