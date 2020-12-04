@@ -2,7 +2,7 @@
 Currently the following languages are supported:
 1. EN: Based on [The CMU Pronouncing Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict).
 2. FA: Based on [Zaya Dictionary](https://www.peykaregan.ir/dataset/%D9%88%D8%A7%DA%98%DA%AF%D8%A7%D9%86-%D8%B2%D8%A7%DB%8C%D8%A7%DB%8C-%D8%B2%D8%A8%D8%A7%D9%86-%D9%81%D8%A7%D8%B1%D8%B3%DB%8C).
-
+3. RU: Based on [vosk-model-ru-0.10](https://alphacephei.com/vosk/models)
 
 
 ## Contribution
