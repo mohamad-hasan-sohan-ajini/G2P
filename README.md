@@ -21,6 +21,7 @@ pip3 install -r requirements.txt
 Currently the following languages are supported:
 1. EN: English
 2. FA: Farsi
+3. RU: Russian
 
 You could easily provide and use your own language specific pronunciatin doctionary for training G2P.
 More details about data preparation and contribution could be found in ```resources```.<br/>
@@ -51,6 +52,9 @@ Training parameters could be found at ```config.py```.
 ### Test
 To get pronunciation of a word:
 ```
+# RU example
+python test.py --word удалёнка
+u0.d.a0.lj.o1.n.k.a0.<eos>
 # EN example
 python test.py --word PYTHON
 P.IH.TH.AH.N.<eos>
@@ -60,6 +64,9 @@ p.A.y.t.o.n.<eos>
 ```
 You could also visualize the attention weights, using ```--visualize```:
 ```
+# RU example
+python test.py --visualize --word удалёнка
+u0.d.a0.lj.o1.n.k.a0.<eos>
 # EN example
 python test.py --visualize --word PYTHON
 P.IH.TH.AH.N.<eos>
@@ -67,19 +74,7 @@ P.IH.TH.AH.N.<eos>
 python test.py --visualize --word پایتون
 p.A.y.t.o.n.<eos>
 ```
-EN                              | FA
-:------------------------------:|:---------------------------:
-![](attention/EN/PYTHON.png)    |![](attention/FA/پایتون.png)
-
-
 
 ## Other implementations
 Also check [Persian_G2P](https://github.com/AzamRabiee/Persian_G2P), for encoder-decoder seq2seq model implementation.
 
-
-
-## TODO
-Add beam search decoding.<br/>
-Develop PER evaluate script.<br/>
-Add encoder-decoder model.<br/>
-Add text pronunciation (using hazm for kasre ezafe construction).<br/>
