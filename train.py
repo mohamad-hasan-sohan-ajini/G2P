@@ -65,11 +65,14 @@ for e in range(TrainConfig.epochs):
         # decoder
         T, N = p.size()
         outputs = []
-        hidden = torch.ones(
-            1,
-            N,
-            ModelConfig.hidden_size
-        ).to(TrainConfig.device)
+        hidden = (
+            torch.ones(
+                1,
+                N,
+                ModelConfig.hidden_size
+            )
+            .to(TrainConfig.device)
+        )
         for t in range(T - 1):
             out, hidden, _ = decoder_model(
                 p[t:t+1],
