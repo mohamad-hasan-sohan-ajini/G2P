@@ -14,25 +14,31 @@ from config import DataConfig, ModelConfig, TrainConfig
 
 # data prep
 ds = PersianLexicon(
-        DataConfig.graphemes_path,
-        DataConfig.phonemes_path,
-        DataConfig.lexicon_path
-    )
+    DataConfig.graphemes_path,
+    DataConfig.phonemes_path,
+    DataConfig.lexicon_path
+)
 dl = DataLoader(
-        ds,
-        collate_fn=collate_fn,
-        batch_size=TrainConfig.batch_size
-    )
+    ds,
+    collate_fn=collate_fn,
+    batch_size=TrainConfig.batch_size
+)
 
 # models
-encoder_model = Encoder(
-    ModelConfig.graphemes_size,
-    ModelConfig.hidden_size
-).to(TrainConfig.device)
-decoder_model = Decoder(
-    ModelConfig.phonemes_size,
-    ModelConfig.hidden_size
-).to(TrainConfig.device)
+encoder_model = (
+    Encoder(
+        ModelConfig.graphemes_size,
+        ModelConfig.hidden_size
+    )
+    .to(TrainConfig.device)
+)
+decoder_model = (
+    Decoder(
+        ModelConfig.phonemes_size,
+        ModelConfig.hidden_size
+    )
+    .to(TrainConfig.device)
+)
 
 # log
 log = SummaryWriter(TrainConfig.log_path)
@@ -42,8 +48,7 @@ criterion = nn.CrossEntropyLoss()
 
 # optimizer
 optimizer = torch.optim.Adam(
-    list(encoder_model.parameters()) +
-    list(decoder_model.parameters()),
+    list(encoder_model.parameters()) + list(decoder_model.parameters()),
     lr=TrainConfig.lr
 )
 
