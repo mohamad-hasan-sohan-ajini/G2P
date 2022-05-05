@@ -84,3 +84,5 @@ EN                              | FA                         | RU
 ## Other implementations
 
 Also check [Persian_G2P](https://github.com/AzamRabiee/Persian_G2P), for encoder-decoder seq2seq model implementation.
+
+A C++ implementation that relies on trained models of this repository, could be found [here](https://github.com/hajix/CPPG2P).
